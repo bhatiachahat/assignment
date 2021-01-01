@@ -1,35 +1,20 @@
 const express=require("express");
-
-var prompt = require('prompt-sync')();
+const prompt = require('prompt-sync')();
 const chalk = require('chalk');
-
+const HashMap = require('hashmap');
+global.fileusagemap= new HashMap();
 const crudoperations=require('./controller/operations');
-
-
-
 const app=express();
-app.use(express.json());
 const port=process.env.PORT || 8000;
 
-
-
-
-    app.listen(port,(err)=>{
+app.listen(port,(err)=>{
         if(err)console.log(err);
        // console.log(`Server is running on port:${port}`);
     })
-    var HashMap = require('hashmap');
-    global.fileusagemap= new HashMap();
-    for(var i=0;i<5;i++){
+     for(var i=0;i<5;i++){
         fileusagemap.set(i, false);
     }
 console.log(chalk.magentaBright("****Welcome to YourOwnLocalStorage****"));
-
-
-
-
-         
-
 var flag=false
 
     do{
@@ -43,32 +28,25 @@ var flag=false
       
        switch(number){
            case '1':
-           
-           
-           crudoperations.create();
-           flag=true;
-           
-           
-       
-           
-           break;
+                     crudoperations.create();
+                     flag=true;
+                     break;
            case '2':
-           
-            crudoperations.read();
-           flag=true;
-            break;
+                     crudoperations.read();
+                     flag=true;
+                     break;
             case '3':
-              
-                crudoperations.delete();
-           flag=true;
-                break;
-                case '4':
+                     crudoperations.delete();
+                     flag=true;
+                      break;
+            case '4':
                     flag=false;
                     console.log(chalk.red("Exiting"));
                     break;
                     
                     
-            default:console.log(chalk.red("Invalid command!"));
+           default:
+                   console.log(chalk.red("Invalid command!"));
        }
     }while(flag)
     process.exit()
