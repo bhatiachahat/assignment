@@ -1,0 +1,17 @@
+//Create
+1.key greater than 32 charcaters
+2.value more than 16KB.
+3.given value of ttl.
+4.no specified value of ttl
+
+//Read
+1.key greater than 32 characters.
+2.key does not exist.
+3.key exipred.
+4.key found and is not expired.
+
+//Delete
+1.key greater than 32 characters.
+2.key does not exist.
+3.key exipred.
+4.key found and is not expired,deleted successfully.
